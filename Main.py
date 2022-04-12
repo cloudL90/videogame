@@ -1,7 +1,10 @@
 from DCHero import DCHero
 from MarvelHero import MarvelHero
+from termcolor import colored
 
 if __name__ == '__main__':
+
+    rosso = '\u001b[31m'
 
     attacks = [
         {'name': 'web',
@@ -20,6 +23,7 @@ if __name__ == '__main__':
     heroes_list = [captain_america, batman, iron_man, spiderman]
     heroes_name_list = [captain_america.name, batman.name, iron_man.name, spiderman.name]
 
+    print("Choose an heroes!")
     for her in heroes_list:
         print("Name: {}".format(her.name))
     heroes = input()
@@ -40,11 +44,8 @@ if __name__ == '__main__':
         enemy = heroes_list[index]
         heroes_list.pop(index)
 
-        print(enemy.life_point)
     while enemy.life_point > 0:
-        if enemy.life_point <= -0:
-            print("You are the number one!!!!!")
-        else:
+        if enemy.life_point:
             print("Choose an attacks!")
             for atk in attacks:
                 print("{}".format(atk))
@@ -55,19 +56,30 @@ if __name__ == '__main__':
                 if attack_dict["name"] == choose_atk:
                     print(attack_dict["power"])"""
             enemy = hero.attack(type(hero), enemy, choose_atk)
-
-            """for atk in attacks:
+        if enemy.life_point < 20:
+            print(colored("Coraggio lo stai indebolendo", "red", "on_cyan"))
+            for atk in attacks:
                 print("{}".format(atk))
-
             choose_atk = input()
-            attack = {}
-            for attack_dict in attacks:
+            print("You choose {}".format(choose_atk))
+            """for elem in attacks:
+                attack_dict = elem
                 if attack_dict["name"] == choose_atk:
-                    attack = attack_dict
-                    print(attack['power'])
-                else:
-                    print("non ci siamo")"""
-
+                    print(attack_dict["power"])"""
+            enemy = hero.attack(type(hero), enemy, choose_atk)
+        if enemy.life_point < 10:
+            print("Ci sei quasi")
+            for atk in attacks:
+                print("{}".format(atk))
+            choose_atk = input()
+            print("You choose {}".format(choose_atk))
+            """for elem in attacks:
+                attack_dict = elem
+                if attack_dict["name"] == choose_atk:
+                    print(attack_dict["power"])"""
+            enemy = hero.attack(type(hero), enemy, choose_atk)
+        if enemy.life_point < 2:
+            print("\u001b[31m You are the number one!!!!")
 
 
 

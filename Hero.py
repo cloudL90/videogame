@@ -1,9 +1,9 @@
 import random
 class Hero:
 
-    def __init__(self, name, attack, life_point, landing_probability):
+    def __init__(self, name, attacks, life_point, landing_probability):
         self.name = name
-        self.attacks = attack
+        self.attacks = attacks
         self.life_point = life_point
         self.landing_probability = landing_probability
 
@@ -14,6 +14,7 @@ class Hero:
             if random_probability > 50:
                 attack = {}
                 for attack_dict in self.attacks:
+                    print(attack_dict)
                     if attack_dict["name"] == attack_name:
                         attack = attack_dict
                         enemy.life_point -= attack['power'] * random.random()
