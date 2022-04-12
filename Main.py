@@ -40,28 +40,34 @@ if __name__ == '__main__':
         enemy = heroes_list[index]
         heroes_list.pop(index)
 
-    print("Choose an attacks!")
-    for atk in attacks:
-        print("{}".format(atk))
-    choose_atk = input()
-    print("You choose {}".format(choose_atk))
-    """for elem in attacks:
-        attack_dict = elem
-        if attack_dict["name"] == choose_atk:
-            print(attack_dict["power"])"""
-    enemy = hero.attack(type(hero), enemy, choose_atk)
-
-    """for atk in attacks:
-        print("{}".format(atk))
-
-    choose_atk = input()
-    attack = {}
-    for attack_dict in attacks:
-        if attack_dict["name"] == choose_atk:
-            attack = attack_dict
-            print(attack['power'])
+        print(enemy.life_point)
+    while enemy.life_point > 0:
+        if enemy.life_point <= -0:
+            print("You are the number one!!!!!")
         else:
-            print("non ci siamo")"""
+            print("Choose an attacks!")
+            for atk in attacks:
+                print("{}".format(atk))
+            choose_atk = input()
+            print("You choose {}".format(choose_atk))
+            """for elem in attacks:
+                attack_dict = elem
+                if attack_dict["name"] == choose_atk:
+                    print(attack_dict["power"])"""
+            enemy = hero.attack(type(hero), enemy, choose_atk)
+
+            """for atk in attacks:
+                print("{}".format(atk))
+
+            choose_atk = input()
+            attack = {}
+            for attack_dict in attacks:
+                if attack_dict["name"] == choose_atk:
+                    attack = attack_dict
+                    print(attack['power'])
+                else:
+                    print("non ci siamo")"""
+
 
 
 
