@@ -4,8 +4,6 @@ from termcolor import colored
 
 if __name__ == '__main__':
 
-    rosso = '\u001b[31m'
-
     attacks = [
         {'name': 'web',
          'power': 5},
@@ -44,46 +42,12 @@ if __name__ == '__main__':
         enemy = heroes_list[index]
         heroes_list.pop(index)
 
-    while enemy.life_point > 0:
-        if enemy.life_point:
-            print("Choose an attacks!")
+    while enemy.life_point > 0 and hero.life_point > 0:
+            print("Choose an attack!")
             for atk in attacks:
                 print("{}".format(atk))
-            choose_atk = input()
-            print("You choose {}".format(choose_atk))
-            """for elem in attacks:
-                attack_dict = elem
-                if attack_dict["name"] == choose_atk:
-                    print(attack_dict["power"])"""
-            enemy = hero.attack(type(hero), enemy, choose_atk)
-        if enemy.life_point < 20:
-            print(colored("Coraggio lo stai indebolendo", "red", "on_cyan"))
-            for atk in attacks:
-                print("{}".format(atk))
-            choose_atk = input()
-            print("You choose {}".format(choose_atk))
-            """for elem in attacks:
-                attack_dict = elem
-                if attack_dict["name"] == choose_atk:
-                    print(attack_dict["power"])"""
-            enemy = hero.attack(type(hero), enemy, choose_atk)
-        if enemy.life_point < 10:
-            print("Ci sei quasi")
-            for atk in attacks:
-                print("{}".format(atk))
-            choose_atk = input()
-            print("You choose {}".format(choose_atk))
-            """for elem in attacks:
-                attack_dict = elem
-                if attack_dict["name"] == choose_atk:
-                    print(attack_dict["power"])"""
-            enemy = hero.attack(type(hero), enemy, choose_atk)
-        if enemy.life_point < 2:
-            print("\u001b[31m You are the number one!!!!")
-
-
-
-
-
-
+            hero_atk = input()
+            print("%s attack with %s" % (heroes, hero_atk))
+            hero.attack(enemy, hero_atk)
+            hero, enemy = enemy, hero
 

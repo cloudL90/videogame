@@ -1,5 +1,9 @@
 from Hero import Hero
 
 class DCHero(Hero):
-    def __init__(self, name, attack, life_point, landing_probability):
-        super().__init__(name, attack, life_point, landing_probability)
+
+    def attack(self, enemy, attack_name):
+        if type(enemy) == DCHero:
+            print('Same hero type!!!')
+        else:
+            super(DCHero, self).attack(enemy, attack_name)
