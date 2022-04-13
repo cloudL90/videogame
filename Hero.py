@@ -9,6 +9,8 @@ class Hero:
         self.life_point = life_point
         self.landing_probability = landing_probability
 
+    factors = ["Snowing", "Mal di pancia", "Indigestione di cozze"]
+
     def attack(self, enemy: Hero, attack_name):
         random_probability = self.landing_probability
         # print(random_probability)
@@ -18,8 +20,9 @@ class Hero:
             for attack_dict in self.attacks:
                 print(attack_dict)
                 if attack_dict["name"] == attack_name:
-                    attack = attack_dict
-                    enemy.life_point -= attack['power'] * random.random()
+                    attack = attack_dict['power'] * random.random()
+                    print("%s ha abbassato l'attacco di %s a %i" % (Hero.factor(self.factors), enemy.name, attack))
+                    enemy.life_point -= attack
                     attack_ok = True
                     if enemy.life_point < 0:
                         print("%s id dead!" % (enemy.name))
@@ -29,3 +32,9 @@ class Hero:
         else:
             print("Attack Failed!")
             return enemy
+
+    def factor(factors):
+        casuality = factors[random.randint(0, 2)]
+        return casuality
+
+    # print(factor(factors))

@@ -55,5 +55,6 @@ if __name__ == '__main__':
             hero, enemy = enemy, hero
             time.sleep(1.5)
 
+    #print(Hero.factors[randint(0, 2)])
     # print(attacks[randint(0, 2)]['name'])
 
