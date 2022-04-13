@@ -1,6 +1,8 @@
 from DCHero import DCHero
 from MarvelHero import MarvelHero
 from termcolor import colored
+from random import randint
+import time
 
 if __name__ == '__main__':
 
@@ -13,10 +15,10 @@ if __name__ == '__main__':
          'power': 10},
     ]
 
-    captain_america = DCHero("Captain America", attacks, 30, 100) # DC
-    batman = DCHero("Batman", attacks, 40, 155) # DC
-    iron_man = MarvelHero("Ironman", attacks, 30, 80) # Marvel
-    spiderman = MarvelHero("Spiderman", attacks, 30, 60) # Marvel
+    captain_america = DCHero("Captain America", attacks, 40, 100) # DC
+    batman = DCHero("Batman", attacks, 40, 100) # DC
+    iron_man = MarvelHero("Ironman", attacks, 40, 100) # Marvel
+    spiderman = MarvelHero("Spiderman", attacks, 40, 100) # Marvel
 
     heroes_list = [captain_america, batman, iron_man, spiderman]
     heroes_name_list = [captain_america.name, batman.name, iron_man.name, spiderman.name]
@@ -43,11 +45,15 @@ if __name__ == '__main__':
         heroes_list.pop(index)
 
     while enemy.life_point > 0 and hero.life_point > 0:
-            print("Choose an attack!")
+            random_attack = attacks[randint(0, 2)]['name']
+            # print("Choose an attack!")
             for atk in attacks:
                 print("{}".format(atk))
-            hero_atk = input()
-            print("%s attack with %s" % (heroes, hero_atk))
-            hero.attack(enemy, hero_atk)
+            # hero_atk = input()
+            print("%s attack with %s" % (hero.name, random_attack))
+            hero.attack(enemy, random_attack)
             hero, enemy = enemy, hero
+            time.sleep(1.5)
+
+    # print(attacks[randint(0, 2)]['name'])
 
